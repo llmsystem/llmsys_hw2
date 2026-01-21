@@ -18,14 +18,18 @@ from .tensor_functions import tensor_from_numpy
 
 import ctypes
 import numpy as np
+import os
 import pycuda.autoinit
 import pycuda.driver as cuda
 
 # Load the shared library
+lib = None
 try:
-    lib = ctypes.CDLL("minitorch/cuda_kernels/combine.so")
-except:
-    print("cuda kernels not implemented: combine.so not found")
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    lib_path = os.path.join(current_dir, "cuda_kernels", "combine.so")
+    lib = ctypes.CDLL(lib_path)
+except Exception as e:
+    print(f"cuda kernels not implemented: combine.so not found ({e})")
 
 datatype = np.float32
 
