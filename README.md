@@ -227,7 +227,7 @@ class SentenceSentimentTrain:
 Train the neural network on SST-2 (Stanford Sentiment Treebank) and report your training and validation results.
 
 ```bash
-python project/run_sentiment.py
+bash run_sentiment.sh
 ```
 
 You should be able to achieve a best validation accuracy equal to or higher than 75%. It might take some time to download the GloVe embedding file before the first training. Be patient!
